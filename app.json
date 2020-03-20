@@ -1,0 +1,45 @@
+{
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于获取当前城市的天气"
+    }
+  },
+  "plugins": {
+    "routePlan": {
+      "version": "1.0.5",
+      "provider": "wx50b5593e81dd937a"
+    }
+  },
+  "pages": [
+    "pages/index/index",
+    "pages/map/map",
+    "pages/detail/detail",
+    "pages/search/search",
+    "pages/route/route"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "custom",
+    "backgroundTextStyle": "dark"
+  },
+  "tabBar": {
+    "selectedColor": "#312b54",
+    "color": "#aaa",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "selectedIconPath": "assets/icons/acweather.png",
+        "iconPath": "assets/icons/weather.png"
+      },
+      {
+        "pagePath": "pages/map/map",
+        "text": "地图",
+        "selectedIconPath": "assets/icons/acmap.png",
+        "iconPath": "assets/icons/map.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

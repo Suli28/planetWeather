@@ -1,0 +1,145 @@
+<view class="title">星球天气</view>
+<view class="bg"></view>
+<!-- 搜索框 -->
+<view class="navbar">
+  <image class="img" src="../../assets/icons/icon.png"></image>
+  <input class="ipt" placeholder-class="place" placeholder="请输入城市名，不要带市和区" bindconfirm="finish" value="{{ipt_value}}"></input>
+</view>
+<!-- 搜索框 end -->
+
+<!-- 定位 begin -->
+<view class="locat_box">
+
+    <view class="user">
+        <view class="icon">
+          <open-data type="userAvatarUrl"></open-data>
+        </view>
+
+        <view class="name">
+        <open-data class="username" type="userNickName"></open-data>
+        </view>
+    </view>
+
+    <view class="city">
+      <view class="left">
+        <image class="locat" src="../../assets/icons/location.png"></image>
+        {{one.city}}
+      </view>
+
+      <view class="right">{{date}} 更新</view>
+    </view>
+</view> 
+<!-- 定位 end -->
+
+<!-- 实况天气begin -->
+<view class="weather">
+   <view>
+    <text>{{one.wea}}</text>
+    <text>空气质量: {{one.air_level}}</text>
+   </view>
+
+   <view class="tem">{{one.tem}} <text>℃</text> </view>
+</view>
+<!-- 实况天气end -->
+
+
+<!-- 7天数据 -->
+<view class="allweather">
+    <view class="text">7天预报</view>
+
+    <scroll-view scroll-x="true">
+
+      <view class="item" wx:for="{{all.data}}" wx:key="id">
+        <view>{{item.date}}</view>
+        <view>{{item.tem2}}~{{item.tem1}}</view>
+        <view>{{item.wea}}</view>
+        <view>{{item.win[0]}}</view>
+        <view>风力: {{item.win_speed}}</view>
+      </view>
+
+    </scroll-view>
+</view>
+<!-- 7天预报 end -->
+
+<!-- 天气详情 -->
+<view class="wea_detail">
+    <view class="item">
+      <text>温度(℃)</text>
+      <text>{{one.tem}}</text>
+    </view>
+
+    <view class="item">
+      <text>湿度(%)</text>
+      <text>{{one.humidity}}</text>
+    </view>
+
+    <view class="item">
+      <text>PM2.5</text>
+      <text>{{one.air_pm25}}</text>
+    </view>
+
+    <view class="item">
+      <text>气压(hPa)</text>
+      <text>{{one.pressure}}</text>
+    </view>
+
+    <view class="item">
+      <text>风向</text>
+      <text>{{one.win}}</text>
+    </view>
+
+    <view class="item">
+      <text>风速</text>
+      <text>{{one.win_meter}}</text>
+    </view>
+
+    <view class="item">
+      <text>风力等级</text>
+      <text>{{one.win_speed}}</text>
+    </view>
+
+    <view class="item">
+      <text>能见度</text>
+      <text>{{one.visibility}}</text>
+    </view>
+
+</view>
+
+
+<!-- 24小时逐3小时预报 -->
+<view class="hours">
+  <view class="text">24小时逐3小时预报</view>
+
+  <!-- 轮播图 -->
+  <swiper next-margin="80rpx">
+
+      <swiper-item wx:for="{{all.data[0].hours}}" wx:key="{{index}}">
+         <view class="container">
+            <text>温度: {{item.tem}}</text>
+            <text>天气: {{item.wea}}</text>
+            <text>风向: {{item.win}}</text>
+            <text>风力: {{item.win_speed}}</text>
+            <text>{{item.day}}</text>
+         </view>
+      </swiper-item>
+
+  </swiper>
+</view>
+
+<!-- 生活指数 -->
+<view class="life">
+    <view class="text">生活指数</view>
+    <view class="box">
+
+      <view class="item" wx:for="{{all.data[0].index}}" wx:key="{{index}}">
+          <image src="../../assets/icons/life{{index+1}}.png"></image>
+          <view class="life_detail">
+              <text >{{index ==1 ? "运动指数" : item.title}}:</text>
+              <text >{{item.desc}}</text>
+          </view>
+      </view>
+
+    </view>
+</view>
+
+<view class="logo">© lilili</view>
